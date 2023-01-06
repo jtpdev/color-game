@@ -1,0 +1,19 @@
+version: '3.3'
+services:
+  db:
+    image: mysql:5.7
+    container_name: "colorgame-db"
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'colorgame'
+      MYSQL_USER: ${JDBC_USER}
+      MYSQL_PASSWORD: ${JDBC_PASS}
+      MYSQL_ROOT_PASSWORD: ${JDBC_PASS}
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    volumes:
+      - colorgame-db:/var/lib/mysql
+volumes:
+  colorgame-db:
